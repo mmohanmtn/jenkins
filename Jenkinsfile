@@ -8,7 +8,7 @@ node {
     stage('Build Image'){
          /*  This builds the actual image; synonymous to 
           *  docker build on the command line */ 
-        app = docker.build('mmohanmtn/hellonode')
+        app = docker.build('mmadan/hellonode')
     }
     stage('Test Image'){
          /*  Ideally, we would run a test framework against our image. 
