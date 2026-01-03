@@ -1,0 +1,19 @@
+{
+  "name": "nimbusdevops-hellonode",
+  "version": "1.0.0"
+  "description": "A Hello World HTTP Server".
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specfied\" && exit 1",
+    "start": "node main.js"
+  },
+  "repository": { 
+    "type": "git",
+    "url": "https://github.com/jakefurlong/node"
+  },
+  "keywords": [ 
+    "node",
+    "docker",
+    "dockerfile"
+  ]
+}

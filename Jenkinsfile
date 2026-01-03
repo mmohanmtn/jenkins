@@ -1,0 +1,29 @@
+/* Jenkinsfile */
+node {
+    def app
+    stage('Clone repository') {
+         /* Let's make sure we have the repository cloned to our workspace */ 
+         checkout scm
+    }
+    stage('Build Image'){
+         /*  This builds the actual image; synonymous to 
+          *  docker build on the command line */ 
+        app = docker.build('jcloudguru/hellonode')
+    }
+    stage('Test Image'){
+         /*  Ideally, we would run a test framework against our image. 
+          *  for this example, we're using a volkswagen type approach; */ 
+        app.inside {
+             sh 'echo "Tests Passed"' 
+        }
+    stage('Push Image'){
+         /*  Finally, we'll push the image with two tags: 
+          *  First, the incremental build number from jenkins 
+          *  Second, the 'latest' tag
+          *  Pushing multiple tags is cheap, as all the layers are reused */
+         docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials') {
+             app.push("$(env.BUILD_NUMBER)") 
+             app.push("latest") 
+         }
+    }
+}
