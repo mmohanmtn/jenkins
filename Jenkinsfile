@@ -16,6 +16,7 @@ node {
         app.inside {
              sh 'echo "Tests Passed"' 
         }
+     }
     stage('Push Image'){
          /*  Finally, we'll push the image with two tags: 
           *  First, the incremental build number from jenkins 
