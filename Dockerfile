@@ -1,5 +1,5 @@
 # use a node Base Image
-FROM node:7-onbuild
+FROM node:latest
 
 # set a health check
 HEALTHCHECK --interval=5s \
